@@ -1,0 +1,125 @@
+'use client'
+import { Button } from "@/components/ui/button"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card"
+import {
+    Field,
+    FieldDescription,
+    FieldGroup,
+    FieldLabel,
+    FieldSeparator,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast"
+
+const CreateEventPage = () => {
+
+    const handleCreateEvent = () => {
+
+    }
+    return (
+        <div>
+            <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
+                <div className="flex w-full max-w-sm flex-col gap-6">
+                    <div className="flex flex-col gap-6">
+                        <Card>
+                            <CardHeader className="text-center">
+                                <CardTitle className="text-xl">Create an event</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <form onSubmit={handleCreateEvent}>
+                                    <FieldGroup>
+                                        <Field>
+                                            <FieldLabel htmlFor="title">Event Title</FieldLabel>
+                                            <Input
+                                                id="title"
+                                                type="text"
+                                                name="title"
+                                                placeholder="Community Cleanup Drive"
+                                                required
+                                            />
+                                        </Field>
+
+                                        <Field>
+                                            <FieldLabel htmlFor="description">Description</FieldLabel>
+                                            <Textarea
+                                                id="description"
+                                                name="description"
+                                                placeholder="Describe what this event is about, who it's for, and what to bring..."
+                                                rows={5}
+                                                required
+                                            />
+                                        </Field>
+
+                                        <Field>
+                                            <FieldLabel htmlFor="eventType">Event Type</FieldLabel>
+                                            <Select name="eventType" id="eventType" required>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select an event type" />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    <SelectItem value="cleanup">Cleanup</SelectItem>
+                                                    <SelectItem value="plantation">Plantation</SelectItem>
+                                                    <SelectItem value="donation">Donation</SelectItem>
+                                                    <SelectItem value="workshop">Workshop</SelectItem>
+                                                    <SelectItem value="fundraiser">Fundraiser</SelectItem>
+                                                    <SelectItem value="other">Other</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </Field>
+
+                                        <Field>
+                                            <FieldLabel htmlFor="thumbnail">Thumbnail Image URL</FieldLabel>
+                                            <Input
+                                                id="thumbnail"
+                                                name="thumbnail"
+                                                type="url"
+                                                placeholder="https://example.com/event-cover.jpg"
+                                                required
+                                            />
+                                        </Field>
+
+                                        <Field>
+                                            <FieldLabel htmlFor="location">Location</FieldLabel>
+                                            <Input
+                                                id="location"
+                                                name="location"
+                                                type="text"
+                                                placeholder="Central Park, New York, NY"
+                                                required
+                                            />
+                                        </Field>
+
+                                        <Field>
+                                            <FieldLabel htmlFor="eventDate">Event Date</FieldLabel>
+                                            <Input
+                                                id="eventDate"
+                                                name="eventDate"
+                                                type="datetime-local"
+                                                required
+                                            />
+                                        </Field>
+                                    </FieldGroup>
+
+                                    <Button type="submit" className="w-full mt-6 rounded-full">
+                                        Create Event
+                                    </Button>
+                                </form>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
+            </div >
+        </div >
+    );
+};
+
+export default CreateEventPage;

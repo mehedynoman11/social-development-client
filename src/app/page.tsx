@@ -1,9 +1,11 @@
-import Image from "next/image";
+import HeroPage from "@/components/Hero";
+import ImpactStats from "@/components/ImpactStats";
 
 export default function Home() {
   return (
-    <div>
-      Home Page
-    </div>
+    <>
+      <HeroPage />
+      <ImpactStats />
+    </>
   );
 }
