@@ -3,28 +3,30 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const UpcomingEventCard = ({event}:{event: IUpcomingEvent}) => {
+const UpcomingEventCard = ({ event }: { event: IUpcomingEvent }) => {
     const formattedDate = new Date(event.eventDate).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
     });
     return (
-       <div className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
-            {/* Image */}
+        <div className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
+
             <div className="relative h-52 w-full overflow-hidden">
                 <Image
                     src={event.image}
                     alt={event.title}
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                {/* Event Type Badge */}
+
                 <span className="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full capitalize">
                     {event.eventType}
                 </span>
             </div>
 
-            {/* Content */}
             <div className="p-5 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                     {event.title}
@@ -33,7 +35,7 @@ const UpcomingEventCard = ({event}:{event: IUpcomingEvent}) => {
                     {event.description}
                 </p>
 
-                {/* Meta Info */}
+
                 <div className="space-y-2 text-sm text-gray-700 mb-4">
                     <div className="flex items-center gap-2">
                         <svg
@@ -75,9 +77,8 @@ const UpcomingEventCard = ({event}:{event: IUpcomingEvent}) => {
                     </div>
                 </div>
 
-                {/* View Button */}
                 <Link
-                    href={`/events/${event._id}`}
+                    href={`/upcoming-event/${event._id}`}
                     className="mt-auto w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200"
                 >
                     View Event

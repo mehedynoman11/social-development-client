@@ -63,9 +63,17 @@ const CreateEventPage = () => {
 
         try {
             const eventData = await res.json();
-            console.log(eventData)
+
+            if (!res.ok) {
+                toast.error(eventData.message || "Failed to create event.");
+                return;
+            }
+
+            toast.success("Event Created Successfully.");
+
         } catch (error) {
-            console.log(error)
+            toast.error("Something went wrong!");
+            console.error(error);
         }
     }
     return (
