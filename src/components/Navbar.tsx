@@ -40,7 +40,7 @@ const Navbar = () => {
                     {/* Desktop Nav Links */}
                     <div className="hidden md:flex items-center gap-8">
                         <Link
-                            href="#"
+                            href="/upcoming-event"
                             className={cn(
                                 "relative text-lg text-foreground transition-colors duration-300",
                                 "after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0",
@@ -132,7 +132,7 @@ const Navbar = () => {
                 >
                     <div className="flex flex-col gap-1 pt-2 border-t border-amber-200/50">
                         <Link
-                            href="#"
+                            href="/upcoming-event"
                             className="px-4 py-3 rounded-lg text-base font-semibold hover:bg-amber-100 transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >

@@ -18,12 +18,55 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { authClient } from "@/lib/auth-client";
+import { string } from "better-auth"
+import React from "react"
 import toast from "react-hot-toast"
 
 const CreateEventPage = () => {
 
-    const handleCreateEvent = () => {
+    const handleCreateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formValue = new FormData(e.currentTarget);
+        const raw = Object.fromEntries(formValue.entries());
 
+        // const data = Object.fromEntries(formValue.entries()) as {
+        //     title: string,
+        //     description: string,
+        //     eventType: string,
+        //     image: string,
+        //     location: string,
+        //     eventDate: string,
+        // }
+
+        const data = {
+            title: String(raw.title ?? '').trim(),
+            description: String(raw.description ?? '').trim(),
+            eventType: String(raw.eventType ?? ''),
+            image: String(raw.image ?? '').trim(),
+            location: String(raw.location ?? '').trim(),
+            eventDate: raw.eventDate ? new Date(String(raw.eventDate)).toISOString() : null,
+        };
+
+        if (!data.title || !data.eventType || !data.eventDate) {
+            console.error('Missing required fields');
+            return;
+        }
+
+
+        const res = await fetch("http://localhost:5000/create-event", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+
+        try {
+            const eventData = await res.json();
+            console.log(eventData)
+        } catch (error) {
+            console.log(error)
+        }
     }
     return (
         <div>
@@ -79,8 +122,8 @@ const CreateEventPage = () => {
                                         <Field>
                                             <FieldLabel htmlFor="thumbnail">Thumbnail Image URL</FieldLabel>
                                             <Input
-                                                id="thumbnail"
-                                                name="thumbnail"
+                                                id="image"
+                                                name="image"
                                                 type="url"
                                                 placeholder="https://example.com/event-cover.jpg"
                                                 required
