@@ -18,18 +18,21 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { authClient } from "@/lib/auth-client";
-import { string } from "better-auth"
+import { email, string } from "better-auth"
 import React from "react"
 import toast from "react-hot-toast"
 
 const CreateEventPage = () => {
-
+    const {data: session} = authClient.useSession();
+    const user = session?.user;
     const handleCreateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formValue = new FormData(e.currentTarget);
         const raw = Object.fromEntries(formValue.entries());
 
         const data = {
+            name: user?.name,
+            email: user?.email,
             title: String(raw.title ?? '').trim(),
             description: String(raw.description ?? '').trim(),
             eventType: String(raw.eventType ?? ''),
@@ -37,12 +40,6 @@ const CreateEventPage = () => {
             location: String(raw.location ?? '').trim(),
             eventDate: raw.eventDate ? new Date(String(raw.eventDate)).toISOString() : null,
         };
-
-        if (!data.title || !data.eventType || !data.eventDate) {
-            console.error('Missing required fields');
-            return;
-        }
-
 
         const res = await fetch("http://localhost:5000/create-event", {
             method: "POST",
