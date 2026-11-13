@@ -29,15 +29,6 @@ const CreateEventPage = () => {
         const formValue = new FormData(e.currentTarget);
         const raw = Object.fromEntries(formValue.entries());
 
-        // const data = Object.fromEntries(formValue.entries()) as {
-        //     title: string,
-        //     description: string,
-        //     eventType: string,
-        //     image: string,
-        //     location: string,
-        //     eventDate: string,
-        // }
-
         const data = {
             title: String(raw.title ?? '').trim(),
             description: String(raw.description ?? '').trim(),
