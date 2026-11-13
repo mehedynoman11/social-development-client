@@ -83,10 +83,12 @@ const Navbar = () => {
 
                                 {isDropdownOpen && (
                                     <div className="absolute right-0 mt-2 w-56 rounded-xl bg-white shadow-lg border border-amber-100 py-2 animate-in fade-in slide-in-from-top-2">
-                                        <div className="px-4 py-2 border-b border-amber-100">
-                                            <p className="text-sm font-semibold">{user?.name}</p>
-                                            <p className="text-xs text-muted-foreground">{user?.email}</p>
-                                        </div>
+                                            <div className="px-4 py-2 border-b border-amber-100">
+                                        <Link href={'/profile'}>
+                                                <p className="text-sm font-semibold">{user?.name}</p>
+                                                <p className="text-xs text-muted-foreground">{user?.email}</p>
+                                        </Link>
+                                            </div>
                                         <Link href="/create-event" className="block px-4 py-2 text-sm hover:bg-amber-50 transition-colors">
                                             Create Event
                                         </Link>
@@ -154,8 +156,10 @@ const Navbar = () => {
                                         )}
                                     </div>
                                     <div>
+                                        <Link href={'/profile'}>
                                         <p className="text-sm font-semibold">{user?.name}</p>
                                         <p className="text-xs text-muted-foreground">{user?.email}</p>
+                                        </Link>
                                     </div>
                                 </div>
                                 <Link href="/create-event" className="px-4 py-3 rounded-lg text-sm hover:bg-amber-100 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>

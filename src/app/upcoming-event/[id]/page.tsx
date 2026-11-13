@@ -3,14 +3,15 @@ import { IUpcomingEvent } from '../page';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Bookmark, CalendarDays, MapPin, Share2, Tag } from 'lucide-react';
+import { ArrowLeft, Bookmark, CalendarDays, MapPin, Pencil, Share2, Tag, Trash2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { notFound } from 'next/navigation';
+import IButton from '@/components/IButton';
 
-const EventDetailsPage = async({ params }: { params: Promise<{ id: string }> }) => {
-    const {id} = await params;
+const EventDetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
 
     const res = await fetch(`http://localhost:5000/upcoming-event/${id}`);
 
@@ -18,7 +19,7 @@ const EventDetailsPage = async({ params }: { params: Promise<{ id: string }> }) 
         notFound();
     }
 
-    const event:IUpcomingEvent = await res.json();
+    const event: IUpcomingEvent = await res.json();
 
     if (!event?._id) {
         notFound();
@@ -36,6 +37,7 @@ const EventDetailsPage = async({ params }: { params: Promise<{ id: string }> }) 
         minute: '2-digit',
     });
 
+    
     return (
         <section className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
@@ -149,23 +151,9 @@ const EventDetailsPage = async({ params }: { params: Promise<{ id: string }> }) 
                                 </div>
 
                                 <Separator />
+                                <IButton />
 
-                                {/* Actions */}
-                                <div className="space-y-3">
-                                    <Button className="w-full" size="lg">
-                                        Register Now
-                                    </Button>
-                                    <div className="grid grid-cols-2 gap-2">
-                                        <Button variant="outline" size="sm">
-                                            <Share2 className="w-4 h-4 mr-2" />
-                                            Share
-                                        </Button>
-                                        <Button variant="outline" size="sm">
-                                            <Bookmark className="w-4 h-4 mr-2" />
-                                            Save
-                                        </Button>
-                                    </div>
-                                </div>
+                               
                             </CardContent>
                         </Card>
                     </div>
