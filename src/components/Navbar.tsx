@@ -13,7 +13,7 @@ const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // Replace with your actual auth state
-    const {data: session} = authClient.useSession();
+    const { data: session } = authClient.useSession();
     const user = session?.user;
 
     const handleSignout = async () => {
@@ -62,7 +62,7 @@ const Navbar = () => {
                                 >
                                     <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden ring-2 ring-primary/30">
                                         {user?.image ? (
-                                           <Avatar>
+                                            <Avatar>
                                                 <AvatarImage src={user.image || ""} />
                                             </Avatar>
                                         ) : (
@@ -91,7 +91,7 @@ const Navbar = () => {
                                             Create Event
                                         </Link>
                                         <Link href="/manage-events" className="block px-4 py-2 text-sm hover:bg-amber-50 transition-colors">
-                                            Manage Events 
+                                            Manage Events
                                         </Link>
                                         <Link href="/joined-event" className="block px-4 py-2 text-sm hover:bg-amber-50 transition-colors">
                                             Joined Events
@@ -144,14 +144,6 @@ const Navbar = () => {
                                 <div className="flex items-center gap-3 px-4 py-3 mt-1 border-t border-amber-200/50">
                                     <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden ring-2 ring-primary/30">
                                         {user?.image ? (
-                                            // <Image
-                                            //     src={user?.image}
-                                            //     alt={user?.name}
-                                            //     width={40}
-                                            //     height={40}
-                                            //      style={{ width: '40px', height: 'auto' }}
-                                            //      className='rounded-full object-fill'
-                                            // />
                                             <Avatar>
                                                 <AvatarImage src={user.image || ""} />
                                             </Avatar>
@@ -173,7 +165,7 @@ const Navbar = () => {
                                     Manage Events
                                 </Link>
                                 <Link href="/joined-events" className="px-4 py-3 rounded-lg text-sm hover:bg-amber-100 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                                    Joined Events 
+                                    Joined Events
                                 </Link>
                                 <button onClick={handleSignout} className="text-left px-4 py-3 rounded-lg text-sm text-red-600 hover:bg-red-50 transition-colors">
                                     Sign out

@@ -40,7 +40,7 @@ const Hero = () => {
                                 size="lg"
                                 className="rounded-full px-8 text-base font-semibold shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all"
                             >
-                                <Link href="/events">Explore Upcoming Events</Link>
+                                <Link href="/upcoming-event">Explore Upcoming Events</Link>
                             </Button>
                             <Button
                                 size="lg"
