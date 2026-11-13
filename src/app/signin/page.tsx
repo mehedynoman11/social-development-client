@@ -18,8 +18,10 @@ import { Input } from "@/components/ui/input"
 import React from "react"
 import { authClient } from "@/lib/auth-client"
 import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 const SignInPage = () => {
+    const router = useRouter();
     const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -33,6 +35,7 @@ const SignInPage = () => {
 
         if (data) {
             toast.success("Sign in successful!");
+            router.push('/');
         }
         if (error) {
             toast.error("Sign in failed: " + error.message);

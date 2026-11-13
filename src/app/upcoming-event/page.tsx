@@ -3,6 +3,7 @@ import React from 'react';
 
 export interface IUpcomingEvent {
     _id: string;
+    email: string;
     title: string;
     description: string;
     eventType: string;

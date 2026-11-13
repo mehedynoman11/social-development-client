@@ -16,9 +16,11 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 
 const SignUpPage = () => {
+    const router = useRouter();
     const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -35,6 +37,7 @@ const SignUpPage = () => {
 
         if (data) {
             toast.success("Sign up successful!");
+            router.push('/');
         }
         if (error) {
             toast.error("Sign up failed: " + error.message);

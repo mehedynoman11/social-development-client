@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Toaster } from 'react-hot-toast';
 import Navbar from "@/components/Navbar";
 import React from "react";
+import EventProvider from "@/context/eventContext";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={inter.className}
     >
       <body className="min-h-full flex flex-col">
+        <EventProvider>
         <Toaster
           position="bottom-right"
           toastOptions={{
@@ -32,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <Navbar />
         {children}
+        </EventProvider>
       </body>
     </html>
   );

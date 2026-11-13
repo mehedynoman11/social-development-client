@@ -1,16 +1,19 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from './ui/button';
 import { Pencil, Trash2 } from 'lucide-react';
 import EditDialogPage from './EditDialog';
 import DeleteDialogPage from './DeleteDialog';
 import { IUpcomingEvent } from '@/app/upcoming-event/page';
+import { EventContext } from '@/context/eventContext';
 
 const IButton = ({event}:{event:IUpcomingEvent}) => {
     const { data: session } = authClient.useSession();
     const user = session?.user;
     const {_id} = event;
+
+    const {addEvent, setAddEvent} = useContext(EventContext);
     return (
         <div>
             {user ?

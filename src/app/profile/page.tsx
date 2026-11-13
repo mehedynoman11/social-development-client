@@ -41,7 +41,7 @@ const actions = [
     icon: ListChecks,
   },
   {
-    href: "/joined-events",
+    href: "/joined-event",
     title: "Joined events",
     description: "See the events you are attending",
     icon: CalendarCheck,
