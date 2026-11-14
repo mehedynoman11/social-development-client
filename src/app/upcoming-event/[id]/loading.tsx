@@ -11,7 +11,7 @@ const paragraphLines = Array.from(
 
 export default function Loading() {
   return (
-    <section className="min-h-screen bg-gray-50 px-4 py-10 sm:px-6 lg:px-8">
+    <section className="min-h-screen bg-gray-50 px-4 py-10 sm:px-6 lg:px-8 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl">
         <Skeleton className="mb-6 h-10 w-40" />
 
@@ -41,7 +41,7 @@ export default function Loading() {
           </div>
 
           <div className="lg:col-span-1">
-            <div className="space-y-5 rounded-xl bg-white p-6 shadow-md ring-1 ring-foreground/10">
+            <div className="space-y-5 rounded-xl bg-white dark:bg-slate-900 p-6 shadow-md ring-1 ring-foreground/10">
               <Skeleton className="h-6 w-40" />
 
               {detailRows.map((id) => (

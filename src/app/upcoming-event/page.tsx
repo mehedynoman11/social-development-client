@@ -18,24 +18,24 @@ const UpcomingEventPage = async () => {
     const eventData: IUpcomingEvent[] = await res.json();
 
     return (
-        <section className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <section className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 dark:bg-slate-950">
             <div className="max-w-6xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+                    <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl dark:text-slate-100">
                         Upcoming Events
                     </h1>
-                    <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto dark:text-slate-400">
                         Discover and join our upcoming events. Don't miss out on these
                         exciting opportunities!
                     </p>
-                    <div className="mt-6 h-1 w-24 bg-indigo-600 rounded-full mx-auto" />
+                    <div className="mt-6 h-1 w-24 bg-indigo-600 rounded-full mx-auto dark:bg-indigo-500" />
                 </div>
 
                 {/* Events Grid */}
                 {eventData.length === 0 ? (
                     <div className="text-center py-16">
-                        <p className="text-gray-500 text-lg">
+                        <p className="text-gray-500 text-lg dark:text-slate-400">
                             No upcoming events at the moment. Please check back later!
                         </p>
                     </div>

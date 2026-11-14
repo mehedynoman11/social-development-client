@@ -53,7 +53,7 @@ const EventDetailsPage = async ({
   });
 
   return (
-    <section className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+    <section className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8 dark:bg-slate-950">
       <div className="max-w-6xl mx-auto">
         {/* Back Button */}
         <Link
@@ -84,27 +84,27 @@ const EventDetailsPage = async ({
 
             {/* Title + Description */}
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-100 leading-tight">
                 {event.title}
               </h1>
 
-              <div className="flex flex-wrap gap-3 mt-4 text-sm text-gray-600">
+              <div className="flex flex-wrap gap-3 mt-4 text-sm text-gray-600 dark:text-slate-400">
                 <span className="inline-flex items-center gap-1.5">
-                  <CalendarDays className="w-4 h-4 text-indigo-600" />
+                  <CalendarDays className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                   {formattedDate}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-indigo-600" />
+                  <MapPin className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                   {event.location}
                 </span>
               </div>
 
               <Separator className="my-6" />
 
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-3">
                 About this Event
               </h2>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              <p className="text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                 {event.description}
               </p>
             </div>
@@ -115,32 +115,32 @@ const EventDetailsPage = async ({
             <Card className="lg:sticky lg:top-6 shadow-md">
               <CardContent className="p-6 space-y-5">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-4">
                     Event Details
                   </h3>
 
                   <div className="space-y-4 text-sm">
                     <div className="flex items-start gap-3">
-                      <CalendarDays className="w-5 h-5 text-indigo-600 mt-0.5 shrink-0" />
+                      <CalendarDays className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900">Date & Time</p>
-                        <p className="text-gray-600">{formattedDate}</p>
-                        <p className="text-gray-600">{formattedTime}</p>
+                        <p className="font-medium text-gray-900 dark:text-slate-100">Date & Time</p>
+                        <p className="text-gray-600 dark:text-slate-400">{formattedDate}</p>
+                        <p className="text-gray-600 dark:text-slate-400">{formattedTime}</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-indigo-600 mt-0.5 shrink-0" />
+                      <MapPin className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900">Location</p>
-                        <p className="text-gray-600">{event.location}</p>
+                        <p className="font-medium text-gray-900 dark:text-slate-100">Location</p>
+                        <p className="text-gray-600 dark:text-slate-400">{event.location}</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <Tag className="w-5 h-5 text-indigo-600 mt-0.5 shrink-0" />
+                      <Tag className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900">Event Type</p>
+                        <p className="font-medium text-gray-900 dark:text-slate-100">Event Type</p>
                         <Badge variant="secondary" className="mt-1 capitalize">
                           {event.eventType}
                         </Badge>

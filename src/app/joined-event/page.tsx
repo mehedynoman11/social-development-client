@@ -11,7 +11,7 @@ const JoinedEventPage = () => {
   const { addEvent: joinedEvents } = useContext(EventContext);
 
   return (
-    <section className="min-h-screen bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+    <section className="min-h-screen bg-gray-50 px-4 py-12 sm:px-6 lg:px-8 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
@@ -41,7 +41,7 @@ const JoinedEventPage = () => {
         </div>
 
         {joinedEvents.length === 0 ? (
-          <div className="rounded-xl border border-dashed bg-white py-16 text-center">
+          <div className="rounded-xl border border-dashed bg-white dark:bg-slate-900 dark:border-slate-800 py-16 text-center">
             <p className="text-lg font-medium">
               You haven&apos;t joined any events yet.
             </p>

@@ -9,10 +9,10 @@ const stats = [
 
 export default function ImpactStats() {
   return (
-    <section className="bg-background py-16 md:py-24">
+    <section className="bg-background py-16 md:py-24 dark:bg-slate-900">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="uppercase text-sm mb-3 font-medium text-gray-600">
+          <p className="uppercase text-sm mb-3 font-medium text-gray-600 dark:text-slate-400">
             Platform Features
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-balance md:text-4xl">
@@ -33,7 +33,7 @@ export default function ImpactStats() {
               <div className="relative mb-6 flex size-28 items-center justify-center">
                 <span
                   aria-hidden="true"
-                  className="absolute right-0 bottom-0 size-20 rounded-full bg-[#C9F2E9]"
+                  className="absolute right-0 bottom-0 size-20 rounded-full bg-[#C9F2E9] dark:bg-emerald-900/40"
                 />
                 <Icon
                   aria-hidden="true"

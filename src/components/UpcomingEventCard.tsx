@@ -10,7 +10,7 @@ const UpcomingEventCard = ({ event }: { event: IUpcomingEvent }) => {
         day: 'numeric',
     });
     return (
-        <div className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
+        <div className="group bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
 
             <div className="relative h-52 w-full overflow-hidden">
                 <Image
@@ -22,24 +22,24 @@ const UpcomingEventCard = ({ event }: { event: IUpcomingEvent }) => {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
 
-                <span className="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full capitalize">
+                <span className="absolute top-4 left-4 bg-indigo-600 dark:bg-indigo-500 text-white text-xs font-semibold px-3 py-1 rounded-full capitalize">
                     {event.eventType}
                 </span>
             </div>
 
             <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2 line-clamp-2">
                     {event.title}
                 </h3>
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                <p className="text-sm text-gray-600 dark:text-slate-400 mb-4 line-clamp-2 flex-grow">
                     {event.description}
                 </p>
 
 
-                <div className="space-y-2 text-sm text-gray-700 mb-4">
+                <div className="space-y-2 text-sm text-gray-700 dark:text-slate-300 mb-4">
                     <div className="flex items-center gap-2">
                         <svg
-                            className="w-4 h-4 text-indigo-600"
+                            className="w-4 h-4 text-indigo-600 dark:text-indigo-400"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -61,7 +61,7 @@ const UpcomingEventCard = ({ event }: { event: IUpcomingEvent }) => {
                     </div>
                     <div className="flex items-center gap-2">
                         <svg
-                            className="w-4 h-4 text-indigo-600"
+                            className="w-4 h-4 text-indigo-600 dark:text-indigo-400"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -79,7 +79,7 @@ const UpcomingEventCard = ({ event }: { event: IUpcomingEvent }) => {
 
                 <Link
                     href={`/upcoming-event/${event._id}`}
-                    className="mt-auto w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200"
+                    className="mt-auto w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200"
                 >
                     View Event
                     <svg

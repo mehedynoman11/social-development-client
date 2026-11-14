@@ -9,7 +9,7 @@ export default function NotFound() {
         <div className="relative mb-8 flex size-32 items-center justify-center">
           <span
             aria-hidden="true"
-            className="absolute inset-0 rounded-full bg-[#C9F2E9]"
+            className="absolute inset-0 rounded-full bg-[#C9F2E9] dark:bg-emerald-900/40"
           />
           <Compass
             aria-hidden="true"

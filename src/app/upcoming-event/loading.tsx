@@ -7,7 +7,7 @@ const cards = Array.from(
 
 export default function Loading() {
   return (
-    <section className="min-h-screen bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+    <section className="min-h-screen bg-gray-50 px-4 py-12 sm:px-6 lg:px-8 dark:bg-slate-950">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col items-center gap-4 text-center">
           <Skeleton className="h-12 w-72 max-w-full sm:h-14" />
@@ -19,7 +19,7 @@ export default function Loading() {
           {cards.map((id) => (
             <div
               key={id}
-              className="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md"
+              className="flex h-full flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-md"
             >
               <Skeleton className="h-52 w-full rounded-none" />
               <div className="flex flex-grow flex-col p-5">

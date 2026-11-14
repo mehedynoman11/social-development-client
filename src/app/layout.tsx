@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import EventProvider from "@/context/eventContext";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,8 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" suppressHydrationWarning className={inter.className}>
       <body className="flex min-h-screen flex-col">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <EventProvider>
           <Toaster
             position="bottom-right"
@@ -38,6 +45,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </EventProvider>
+          </ThemeProvider>
       </body>
     </html>
   );

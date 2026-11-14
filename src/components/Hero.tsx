@@ -45,7 +45,7 @@ const Hero = () => {
                             <Button
                                 size="lg"
                                 variant="outline"
-                                className="rounded-full px-8 text-base font-semibold bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-foreground transition-all"
+                                className="rounded-full px-8 text-base font-semibold bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-foreground dark:border-white/30 dark:hover:bg-white/20 dark:hover:text-white transition-all"
                             >
                                 <Link href="/create-event">Create Event</Link>
                             </Button>
