@@ -7,6 +7,7 @@ import UpcomingEventCard from "@/components/UpcomingEventCard";
 import { Badge } from "@/components/ui/badge";
 import { auth } from "@/lib/auth";
 import type { IUpcomingEvent } from "../upcoming-event/page";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 const ManageEventPage = async () => {
   const session = await auth.api.getSession({
@@ -30,10 +31,14 @@ const ManageEventPage = async () => {
       </div>
     );
   }
-
+  const token = await getTokenFromServer();
   const res = await fetch(
-   `${process.env.SERVER_URL}/manage-events/${encodeURIComponent(user.email)}`,
-    { cache: "no-store" },
+   `${process.env.NEXT_PUBLIC_SERVER_URL}/manage-events/${encodeURIComponent(user.email)}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    },
   );
 
   if (!res.ok) {

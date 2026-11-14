@@ -19,10 +19,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { authClient } from "@/lib/auth-client";
 import { getTokenFromClient } from "@/lib/getTokenFromClient"
+import { useRouter } from "next/navigation"
 import React from "react"
 import toast from "react-hot-toast"
 
 const CreateEventPage = () => {
+    const router = useRouter();
     const {data: session} = authClient.useSession();
     const user = session?.user;
     const handleCreateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,7 +45,7 @@ const CreateEventPage = () => {
 
         const token = await getTokenFromClient();
 
-        const res = await fetch(`${process.env.SERVER_URL}/create-event`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/create-event`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -61,6 +63,7 @@ const CreateEventPage = () => {
             }
 
             toast.success("Event Created Successfully.");
+            router.push('/manage-events');
 
         } catch (error) {
             toast.error("Something went wrong!");

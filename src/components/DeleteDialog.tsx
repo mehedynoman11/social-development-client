@@ -19,7 +19,7 @@ const DeleteDialogPage = ({ _id }: { _id: string }) => {
   const router = useRouter()
   const handleDelete = async () => {
     const token = await getTokenFromClient();
-    const res = await fetch(`${process.env.SERVER_URL}/upcoming-event/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/upcoming-event/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${token}`
