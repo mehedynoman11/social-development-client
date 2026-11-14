@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { authClient } from "@/lib/auth-client";
-import { email, string } from "better-auth"
+import { getTokenFromClient } from "@/lib/getTokenFromClient"
 import React from "react"
 import toast from "react-hot-toast"
 
@@ -41,10 +41,13 @@ const CreateEventPage = () => {
             eventDate: raw.eventDate ? new Date(String(raw.eventDate)).toISOString() : null,
         };
 
+        const token = await getTokenFromClient();
+
         const res = await fetch("http://localhost:5000/create-event", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(data),
         })

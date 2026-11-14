@@ -17,10 +17,18 @@ import { Pencil } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Textarea } from "./ui/textarea"
 import { IUpcomingEvent } from "@/app/upcoming-event/page"
+import { authClient } from "@/lib/auth-client"
 import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
+import { getTokenFromClient } from "@/lib/getTokenFromClient"
 
 
 const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
+    const router = useRouter()
+    const { data: session } = authClient.useSession();
+
+    if (session?.user?.email !== event.email) return null;
+
     const handleUpdateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // const { _id, ...updateeEvent } = event;
@@ -33,10 +41,12 @@ const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
             location: formData.get('location'),
             eventDate: formData.get('eventDate'),
         };
+        const token = await getTokenFromClient();
         const res = await fetch(`http://localhost:5000/upcoming-event/${event._id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(updatedEvent),
         })
@@ -44,8 +54,9 @@ const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
         try {
             if (!res.ok) throw new Error('Update failed');
             const data = await res.json();
-            console.log("After Submit ",data);
+            // console.log("After Submit ",data);
             toast.success('Event updated successfully');
+            router.refresh();
 
         } catch (error) {
             console.error(error);
@@ -53,19 +64,20 @@ const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
         }
     }
     return (
-        <Dialog>
-            <DialogTrigger render={<Button variant="outline" className="flex-1 my-2">
+        <div className="">
+           <Dialog>
+            <DialogTrigger render={<Button variant="default" className="flex-1 my-2">
                 <Pencil className="w-4 h-4 mr-2" />
                 Edit
             </Button>} />
-            <DialogContent className="sm:max-w-sm">
+            <DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-2xl">
 
                 <DialogHeader>
                     <DialogTitle>Edit event</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleUpdateEvent}>
-                    <FieldGroup>
-                        <Field>
+                    <FieldGroup className="md:grid md:grid-cols-2">
+                        <Field className="md:col-span-2">
                             <FieldLabel htmlFor="title">Event Title</FieldLabel>
                             <Input
                                 id="title"
@@ -77,7 +89,7 @@ const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
                             />
                         </Field>
 
-                        <Field>
+                        <Field className="md:col-span-2">
                             <FieldLabel htmlFor="description">Description</FieldLabel>
                             <Textarea
                                 id="description"
@@ -92,7 +104,7 @@ const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
                         <Field>
                             <FieldLabel htmlFor="eventType">Event Type</FieldLabel>
                             <Select name="eventType" defaultValue={event.eventType} id="eventType" required>
-                                <SelectTrigger>
+                                <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select an event type" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -147,13 +159,15 @@ const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
                     </FieldGroup>
 
                     <DialogFooter>
-                        <DialogClose render={<Button variant="outline">Cancel</Button>} />
-                        {/* <DialogClose render={} /> */}
-                        <Button type="submit">Update event</Button>
+                        <DialogClose render={<Button variant="outline" className="w-full sm:w-auto">Cancel</Button>} />
+                        <DialogClose render={<Button type="submit" className="w-full sm:w-auto">Update event</Button>} />
+                        {/* <DialogClose render={} /> */}         
                     </DialogFooter>
                 </form>
             </DialogContent>
-        </Dialog>
+        </Dialog> 
+        </div>
+        
     );
 };
 

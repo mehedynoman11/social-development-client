@@ -13,6 +13,7 @@ export interface IUpcomingEvent {
 }
 
 const UpcomingEventPage = async () => {
+    
     const res = await fetch(`http://localhost:5000/upcoming-event`);
     const eventData: IUpcomingEvent[] = await res.json();
 
