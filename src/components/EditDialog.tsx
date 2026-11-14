@@ -42,7 +42,7 @@ const EditDialogPage = ({ event }: { event: IUpcomingEvent }) => {
             eventDate: formData.get('eventDate'),
         };
         const token = await getTokenFromClient();
-        const res = await fetch(`http://localhost:5000/upcoming-event/${event._id}`, {
+        const res = await fetch(`${process.env.SERVER_URL}/upcoming-event/${event._id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

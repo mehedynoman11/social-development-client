@@ -32,7 +32,7 @@ const ManageEventPage = async () => {
   }
 
   const res = await fetch(
-    `http://localhost:5000/manage-events/${encodeURIComponent(user.email)}`,
+   `${process.env.SERVER_URL}/manage-events/${encodeURIComponent(user.email)}`,
     { cache: "no-store" },
   );
 

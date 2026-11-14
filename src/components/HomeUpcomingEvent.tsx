@@ -3,7 +3,7 @@ import React from 'react';
 import UpcomingEventCard from './UpcomingEventCard';
 
 const HomeUpcomingEvent = async () => {
-     const res = await fetch(`http://localhost:5000/upcoming-event`);
+     const res = await fetch(`${process.env.SERVER_URL}/upcoming-event`);
     const eventData: IUpcomingEvent[] = await res.json();
 
     return (
