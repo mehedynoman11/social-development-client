@@ -35,13 +35,13 @@ const Navbar = () => {
                     <Link href="/" className="flex items-center gap-2 shrink-0">
                         <div className="p-1 rounded-2xl bg-white dark:bg-slate-800">
                             <Image
-                            src="/people.png"
-                            alt="Socially"
-                            width={36}
-                            height={36}
-                            loading="eager"
-                            className="rounded-lg"
-                        />
+                                src="/people.png"
+                                alt="Socially"
+                                width={36}
+                                height={36}
+                                loading="eager"
+                                className="rounded-lg"
+                            />
                         </div>
                         <h1 className="text-xl font-bold tracking-tight">Socially</h1>
                     </Link>
@@ -60,7 +60,9 @@ const Navbar = () => {
                             Upcoming Events
                         </Link>
                     </div>
-
+                    <div className="flex sm:hidden items-center">
+                        <ModeToggle />
+                    </div>
                     {/* Desktop Auth Section */}
                     <div className="hidden md:flex items-center gap-3">
                         <ModeToggle />
@@ -140,7 +142,7 @@ const Navbar = () => {
                     </button>
                 </div>
 
-                {/* Mobile Menu */}
+                {/* Mobile */}
                 <div
                     className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'
                         }`}
@@ -170,8 +172,8 @@ const Navbar = () => {
                                     </div>
                                     <div>
                                         <Link href={'/profile'}>
-                                        <p className="text-sm font-semibold">{user?.name}</p>
-                                        <p className="text-xs text-muted-foreground">{user?.email}</p>
+                                            <p className="text-sm font-semibold">{user?.name}</p>
+                                            <p className="text-xs text-muted-foreground">{user?.email}</p>
                                         </Link>
                                     </div>
                                 </div>
@@ -195,6 +197,7 @@ const Navbar = () => {
                                 </Button>
                             </div>
                         )}
+
                     </div>
                 </div>
             </div>
